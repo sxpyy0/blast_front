@@ -1,0 +1,200 @@
+<template>
+  <div class="home_root">
+    <b-row>
+      <div style="height: 40px"></div>
+    </b-row>
+    <b-row>
+      <b-col md="8">
+        <b-row>
+          <b-col md="6">
+            <!-- 炉况诊断评分，柱状图 -->
+            <p class="title">炉况诊断评分</p>
+            <BlastDiagnoseBar
+              class="mt-3"
+              style="background: rgba(25, 25, 112, 0.4)"
+            />
+          </b-col>
+          <!-- <b-col class="mt-3" md="6" style="margin: auto;text-align:center"> -->
+          <b-col class="mt-3" md="6">
+            <b-row>
+              <div  class="tab_center">
+                <!-- map -->
+                <div class="tab_gd">
+                  <div class="guangdian" id="guangdian1"></div>
+                  <div class="guangdian" id="guangdian2"></div>
+                  <div class="guangdian" id="guangdian3"></div>
+                  <div class="guangdian" id="guangdian4"></div>
+                </div>
+                <div>
+                  <div class="shuju" id="shuju1">
+                    <div class="line1">
+                      <div class="GLP"></div>
+                      <div class="GLP_text"><span>青山高炉</span></div>
+                    </div>
+                    <div class="line2">
+                      <span>暂未获得数据</span>
+                    </div>
+                  </div>
+                  <!-- <div class="shuju" id="shuju2">
+                    <div class="line1">
+                      <div class="GLP2"></div>
+                      <div class="GLP_text2"><span>东山高炉</span></div>
+                    </div>
+                    <div class="line22">
+                      <span>暂未获得数据</span>
+                    </div>
+                  </div>
+                  <div class="shuju" id="shuju3">
+                    <div class="line1">
+                      <div class="GLP3"></div>
+                      <div class="GLP_text3"><span>梅山高炉</span></div>
+                    </div>
+                    <div class="line23">
+                      <span>暂未获得数据</span>
+                    </div>
+                  </div>
+                  <div class="shuju" id="shuju4">
+                    <div class="line1">
+                      <div class="GLP4"></div>
+                      <div class="GLP_text4"><span>宝山高炉</span></div>
+                    </div>
+                    <div class="line24">
+                      <span>运行：&nbsp;</span>
+                      <span style="color: red"
+                        >&nbsp;&nbsp;&nbsp;检修：&nbsp;</span
+                      >
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </b-row>
+
+            <!--  地图 -->
+            <!-- <img src="img/blast/map.png" alt="map" style="margin: 0 auto" /> -->
+          </b-col>
+        </b-row>
+
+        <b-row>
+          <b-col>
+            <!-- alter table -->
+            <AlertTable class="mt-3" style="margin: 0 auto; font-size: 100%" />
+          </b-col>
+        </b-row>
+      </b-col>
+      <b-col md="4">
+        <p class="title">稳定性指数趋势</p>
+        <BlastLine class="mt-3" style="background: rgba(25, 25, 112, 0.4)" />
+        <BlastLine class="mt-3" style="background: rgba(25, 25, 112, 0.4)" />
+        <BlastLine class="mt-3" style="background: rgba(25, 25, 112, 0.4)" />
+        <BlastLine class="mt-3" style="background: rgba(25, 25, 112, 0.4)" />
+      </b-col>
+    </b-row>
+
+    <b-row> </b-row>
+  </div>
+</template>
+
+<script>
+import BlastDiagnoseBar from "./components/BlastDiagnoseBar";
+import BlastLine from "./components/BlastLine";
+import AlertTable from "./components/AlertTable";
+export default {
+  components: {
+    BlastDiagnoseBar,
+    BlastLine,
+    AlertTable,
+  },
+};
+</script>
+
+<style>
+.home_root {
+  background: url("~@/../public/img/map_background.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-background-origin: content-box; /*Safari */
+  background-origin: content-box;
+
+}
+
+.shuju {
+  height: 13vh;
+  width: 13vw;
+  background: url("~@/../public/img/高炉黑框.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.GLP {
+  height: 6.5vh;
+  width: 5vh;
+  background: url("~@/../public/img/高炉.png") no-repeat;
+  background-size: 100% 100%;
+  /*margin-top: -19vh;*/
+  margin-left: 3vw;
+  float: left;
+}
+.GLP_text {
+  float: left;
+  margin-top: -4vh;
+  margin-left: 6vw;
+  font-size: 1.3vw;
+}
+.line1 {
+  height: 6vh;
+  width: 13vw;
+  font-size: 1.1vw;
+  color: #ffffff;
+  float: left;
+  margin: 0 !important;
+}
+.line1 span {
+  text-align: center;
+}
+.line2 {
+  height: 6vh;
+  width: 13vw;
+  font-size: 1vw;
+  color: #18d8ff;
+  float: left;
+  margin-top: 3vh;
+  margin-left: 4vw;
+  font-size: 1vw;
+}
+
+.guangdian {
+  height: 6vh;
+  width: 6vw;
+  background: url("~@/../public/img/光点.png") no-repeat;
+}
+#guangdian1 {
+  float: left;
+  margin-left: 8vw;
+  margin-top: 18vh;
+}
+#guangdian2 {
+  float: left;
+  margin-left: 2vw;
+  margin-top: 8vh;
+}
+#guangdian3 {
+  float: left;
+  margin-left: 2.5vw;
+  margin-top: 17vh;
+}
+#guangdian4 {
+  float: left;
+  margin-left: -23vw;
+  margin-top: 52vh;
+}
+
+.tab_gd {
+  position: absolute;
+}
+
+.tab_center{
+    height: 64vh;
+    width: 40.5vw;
+    margin-top: 7vh;
+    float: left;
+}
+</style>
